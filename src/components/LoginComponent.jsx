@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { signInUser } from '../firebase/authFunctions';
 import '../index.css';
 
+
 const LoginComponent = () => {
   const { userLoggedIn } = useContext(AuthContext);
   const [email, setEmail] = useState('');
@@ -13,9 +14,9 @@ const LoginComponent = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitting login form...'); // <-- Lägg till detta loggningsuttryck
-    console.log('Email:', email); // <-- Lägg till detta loggningsuttryck
-    console.log('Password:', password); // <-- Lägg till detta loggningsuttryck
+    console.log('Submitting login form...');
+    console.log('Email:', email);
+    console.log('Password:', password);
     if (!isSigningIn) {
       setIsSigningIn(true);
       await signInUser(email, password);
@@ -24,7 +25,7 @@ const LoginComponent = () => {
 
   return (
     <div>
-      {userLoggedIn && <Navigate to={'/'} replace={true} />}
+      {userLoggedIn && <Navigate to={'/HomePage'} replace={true} />}
 
       <main className="login-main">
         <div className="login-container">
