@@ -1,8 +1,14 @@
-import { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 
+// Skapa en context för autentisering
 export const AuthContext = createContext();
+
+// En custom hook för att använda autentiseringskontexten
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
 
 export const AuthProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(null);
