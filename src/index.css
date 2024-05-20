@@ -1,0 +1,288 @@
+.login-main {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.login-title {
+  text-align: center;
+}
+
+.login-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.login-form {
+  margin-top: 20px;
+}
+
+.login-input-group {
+  margin-bottom: 15px;
+}
+
+.login-input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-error {
+  color: red;
+  font-weight: bold;
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background-color: #5a67d8;
+  cursor: pointer;
+}
+
+.login-button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.login-signup {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.login-signup-link {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.form-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-container label {
+  font-weight: bold;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-container button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #0056b3;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: antiquewhite;
+}
+
+.blog-context h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.blog-context h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.blog-context p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 12px;
+  color: #333;
+  text-align: left;
+  letter-spacing: 0px;
+}
+
+.blog-context h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+a {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+li {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.AppWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(243, 239, 234);
+  min-height: 100vh; /* Tar upp hela sidans höjd */
+  padding-top: 50px;
+}
+
+.AppContent {
+  width: 400px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.post-list-container {
+  display: flex;
+  flex-direction: column; /* Ändra flexriktningen till column för att placera innehållet vertikalt */
+  align-items: center;
+  background-color: #ffe603;
+  padding: 10px;
+ 
+}
+.post-form-container {
+  display: flex;
+  flex-direction: column; /* Ändra flexriktningen till column för att placera innehållet vertikalt */
+  align-items: center;
+
+
+}
+.post-container {
+  border: 2px solid white; /* Vit ram */
+  background-color: white;
+  margin: 10px;
+  padding: 10px;
+  width: 100%; /* Ta upp hela bredden */
+}
+.login-container {
+  margin: auto;
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe603;
+  color: #ffffff;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+input {
+  margin-right: 20px;
+  margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+  font-family: Helvetica, Arial, sans-serif;
+  width: 100%;
+  
+}
+textarea{
+  width: 100%;
+  margin-bottom: 10px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+  font-style: italic;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+
+}
+
+.buttoncontainer {
+  background-color: rgb(255, 255, 255);
+  padding-bottom: 6px;
+  display: flex;
+  justify-content: center; /* Centrerar innehållet horisontellt */
+  align-items: center; /* Centrerar innehållet vertikalt */
+  gap: 10px;
+}
+
+.buttons {
+  background-color: #f7d7ad;
+  border-style: none;
+  border-radius: 10px;
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  padding: 6px;
+  padding-left: 8px;
+  padding-right: 9px;
+}
+
+/* Media queries för responsiv design */
+@media screen and (max-width: 768px) {
+  .AppContent {
+    width: 100%;
+    margin: 20px;
+    padding: 10px;
+  }
+
+  .post-list-container {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .post-container {
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .Navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input {
+    margin-right: 10px;
+  }
+
+  .buttoncontainer {
+    gap: 5px;
+  }
+}
