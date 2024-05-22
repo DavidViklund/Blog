@@ -13,7 +13,7 @@ const AddPostForm = () => {
       const newPost = {
         title,
         content,
-        author: currentUser.name,
+        author: currentUser.email, // Använd e-postadressen som författare
       };
       addPost(newPost);
       setTitle('');
@@ -23,24 +23,25 @@ const AddPostForm = () => {
 
   return (
     <div className="post-form-container">
-      <form className="post-list-container" onSubmit={handleSubmit}>
-        <div className="post-container">
+      <form className="post-container" onSubmit={handleSubmit}>
+        <div className="post-content">
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
-            className="input-field" // Lägg till en CSS-klass för inputfältet
+            className="input-field"
           />
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
             placeholder="Content"
+            className="input-field"
           />
           <button className="buttons">ADD</button>
         </div>
       </form>
-      <CommentForm/>
+      <CommentForm />
     </div>
   );
 };

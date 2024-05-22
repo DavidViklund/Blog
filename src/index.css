@@ -172,12 +172,12 @@ body, html {
 .post-list-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   background-color: white;
   padding: 10px;
-  border: 2px solid white;
+  border: 10px solid  rgb(226, 191, 14);
   margin: 10px auto;
-  max-width: 800px;
+  max-width: 600px;
   width: 100%;
 }
 
@@ -188,7 +188,7 @@ body, html {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .post-form-container {

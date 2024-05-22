@@ -1,7 +1,6 @@
 import React from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import Post from "./post";  // Se till att denna filväg är korrekt
-
+import Post from './Post';
 
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
@@ -11,6 +10,7 @@ const PostList = () => {
       {posts.map((post) => (
         <Post
           key={post.id}
+          id={post.id}
           title={post.title}
           content={post.content}
           author={post.author}

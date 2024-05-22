@@ -1,24 +1,20 @@
 import React, { createContext, useState, useContext } from 'react';
 
-
 const BlogContext = createContext();
 
 export const useBlogContext = () => {
   return useContext(BlogContext);
 };
-          
+
 export const BlogProvider = ({ children }) => {
   const [posts, setPosts] = useState([
-    // Initiala blogginlägg
-    
-    { id: 1, title: 'First Post', author: 'David Viklund', 
-    content: 'Naturvin är som att träffa en gammal vän - bekant men ändå överraskande. Det är ett sätt att göra vin på som hyllar naturens gåvor och respekterar dess mysterium. Här handlar det om att släppa taget om förutfattade meningar och låta vinet tala för sig självt.', comments: [] },
-    
+    { id: 1, title: 'First Post', author: 'David Viklund', content: 'Naturvin är som att träffa en gammal vän - bekant men ändå överraskande. Det är ett sätt att göra vin på som hyllar naturens gåvor och respekterar dess mysterium. Här handlar det om att släppa taget om förutfattade meningar och låta vinet tala för sig självt.', comments: [] },
   ]);
-  
+
   const [currentUser, setCurrentUser] = useState({
-    id: 2,  // Exempelanvändare
-    name: 'John Doe'
+    id: 2,
+    name: 'John Doe',
+    email: 'john.doe@example.com'
   });
 
   const addPost = (newPost) => {
@@ -26,6 +22,7 @@ export const BlogProvider = ({ children }) => {
   };
 
   const editPost = (postId, updatedPost) => {
+    console.log('Updating post:', postId, updatedPost);
     setPosts((prevPosts) =>
       prevPosts.map((post) =>
         post.id === postId ? { ...post, ...updatedPost } : post
@@ -58,9 +55,11 @@ export const BlogProvider = ({ children }) => {
         addComment,
       }}
     >
-      <div className="blog-context">{children}</div> {/* Använda en wrapper för att applicera CSS */}
+      {children}
     </BlogContext.Provider>
   );
 };
 
 export default BlogContext;
+
+
