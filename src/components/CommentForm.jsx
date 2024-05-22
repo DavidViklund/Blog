@@ -1,7 +1,6 @@
-
+// CommentForm.jsx
 import React, { useState } from 'react';
 import { useBlogContext } from "../context/BlogContext";
-
 
 const CommentForm = ({ postId }) => {
   const [commentText, setCommentText] = useState('');
@@ -27,5 +26,8 @@ const CommentForm = ({ postId }) => {
     </form>
   );
 };
+
+
+
 
 export default CommentForm;
