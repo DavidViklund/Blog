@@ -1,9 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { signInUser } from '../firebase/authFunctions';
 import '../index.css';
-
 
 const LoginComponent = () => {
   const { userLoggedIn } = useContext(AuthContext);
@@ -12,16 +11,26 @@ const LoginComponent = () => {
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Submitting login form...');
-    console.log('Email:', email);
-    console.log('Password:', password);
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      await signInUser(email, password);
-    }
-  };
+  // Använd useCallback för att memoizera onSubmit-funktionen
+  const onSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      console.log('Submitting login form...');
+      console.log('Email:', email);
+      console.log('Password:', password);
+      if (!isSigningIn) {
+        setIsSigningIn(true);
+        try {
+          await signInUser(email, password);
+        } catch (error) {
+          setErrorMessage(error.message);
+        } finally {
+          setIsSigningIn(false);
+        }
+      }
+    },
+    [email, password, isSigningIn]
+  );
 
   return (
     <div>

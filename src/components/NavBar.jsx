@@ -1,11 +1,9 @@
-// Navbar.jsx
-
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const { userLoggedIn, logout } = useContext(AuthContext);
+  const { currentUser, userLoggedIn, logout } = useContext(AuthContext);
 
   return (
     <nav>
@@ -17,6 +15,7 @@ const Navbar = () => {
           <>
             <li>
               <button onClick={logout}>Logout</button>
+              <p>{currentUser?.email}</p>
             </li>
           </>
         ) : (

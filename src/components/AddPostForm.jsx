@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useBlogContext } from "../context/BlogContext";
+import CommentForm from './CommentForm';
 
 const AddPostForm = () => {
   const [title, setTitle] = useState('');
@@ -39,6 +40,7 @@ const AddPostForm = () => {
           <button className="buttons">ADD</button>
         </div>
       </form>
+      <CommentForm/>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 
-// Skapa en context för autentisering
+// Create a context for authentication
 export const AuthContext = createContext();
 
-// En custom hook för att använda autentiseringskontexten
+// A custom hook to use the authentication context
 export const useAuth = () => {
   return useContext(AuthContext);
 };
@@ -15,9 +15,9 @@ export const AuthProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Prenumerera på ändringar i autentiseringsstatusen med onAuthStateChanged
+    // Subscribe to authentication state changes with onAuthStateChanged
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      // Uppdatera currentUser och sparad inloggningsstatus baserat på den aktuella autentiseringsstatusen
+      // Update currentUser and save logged-in status based on the current authentication state
       if (user) {
         setCurrentUser(user);
         localStorage.setItem("userLoggedIn", "true");
@@ -25,28 +25,35 @@ export const AuthProvider = (props) => {
         setCurrentUser(null);
         localStorage.removeItem("userLoggedIn");
       }
-      // Sluta ladda när autentiseringsstatusen har uppdaterats
+      // Stop loading when authentication state has been updated
       setLoading(false);
     });
 
-    // Avsluta prenumerationen när komponenten avmonteras
+    // Unsubscribe when the component unmounts
     return unsubscribe;
   }, []);
 
   useEffect(() => {
-    // Återställ inloggningsstatus vid sidomladdning om användaren tidigare var inloggad
+    // Restore logged-in status on page reload if the user was previously logged in
     const userLoggedIn = localStorage.getItem("userLoggedIn");
-    if (userLoggedIn === "true") {
+    if (userLoggedIn === "true" && !currentUser) {
       setCurrentUser(auth.currentUser);
     }
-  }, []);
+  }, [currentUser]);
 
-  // Skapa ett objekt med currentUser och tillhandahåll det som värde till AuthContext.Provider
-  const values = { currentUser };
+  const logout = () => {
+    signOut(auth).then(() => {
+      setCurrentUser(null);
+      localStorage.removeItem("userLoggedIn");
+    });
+  };
+
+  // Create an object with currentUser and provide it as a value to AuthContext.Provider
+  const values = { currentUser, userLoggedIn: !!currentUser, logout };
 
   return (
     <AuthContext.Provider value={values}>
-      {/* Rendera endast barnkomponenterna när autentiseringsstatusen har uppdaterats */}
+      {/* Render child components only when authentication status has been updated */}
       {!loading && props.children}
     </AuthContext.Provider>
   );
