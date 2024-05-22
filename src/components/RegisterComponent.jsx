@@ -1,3 +1,4 @@
+
 import React, { useState, useContext } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -13,28 +14,33 @@ const RegisterComponent = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match");
+      return;
+    }
     if (!isRegistering) {
       setIsRegistering(true);
-      await createUser(email, password);
+      try {
+        await createUser(email, password);
+      } catch (error) {
+        setErrorMessage(error.message);
+        setIsRegistering(false);
+      }
     }
   };
 
   return (
     <>
-      {userLoggedIn && <Navigate to={"/"} replace={true} />}
+      {userLoggedIn && <Navigate to="/" replace={true} />}
 
-      <main className="w-full mt-40 flex self-center place-content-center place-items-center">
-        <div className="w-96 space-y-5 p-4 shadow-xl border rounded-xl">
-          <div className="text-center mb-6">
-            <div className="mt-2">
-              <h3 className="text-xl font-semibold sm:text-2xl">
-                Create a new account
-              </h3>
-            </div>
+      <main className="login-main">
+        <div className="login-container">
+          <div className="login-title">
+            <h3 className="login-heading">Create a new account</h3>
           </div>
-          <form onSubmit={onSubmit} className="space-y-4">
-            <div>
-              <label className="text-sm text-gray-600 font-bold">Email</label>
+          <form onSubmit={onSubmit} className="login-form">
+            <div className="login-input-group">
+              <label>Email</label>
               <input
                 type="email"
                 autoComplete="email"
@@ -43,14 +49,11 @@ const RegisterComponent = () => {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:indigo-600 shadow-sm rounded-lg transition duration-300"
               />
             </div>
 
-            <div>
-              <label className="text-sm text-gray-600 font-bold">
-                Password
-              </label>
+            <div className="login-input-group">
+              <label>Password</label>
               <input
                 disabled={isRegistering}
                 type="password"
@@ -60,14 +63,11 @@ const RegisterComponent = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
               />
             </div>
 
-            <div>
-              <label className="text-sm text-gray-600 font-bold">
-                Confirm Password
-              </label>
+            <div className="login-input-group">
+              <label>Confirm Password</label>
               <input
                 disabled={isRegistering}
                 type="password"
@@ -77,31 +77,25 @@ const RegisterComponent = () => {
                 onChange={(e) => {
                   setconfirmPassword(e.target.value);
                 }}
-                className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300"
               />
             </div>
 
             {errorMessage && (
-              <span className="text-red-600 font-bold">{errorMessage}</span>
+              <span className="login-error">{errorMessage}</span>
             )}
 
             <button
               type="submit"
               disabled={isRegistering}
-              className={`w-full px-4 py-2 text-white font-medium rounded-lg ${
-                isRegistering
-                  ? "bg-gray-300 cursor-not-allowed"
-                  : "bg-indigo-600 hover:bg-indigo-700 hover:shadow-xl transition duration-300"
+              className={`login-button ${
+                isRegistering ? "disabled" : ""
               }`}
             >
               {isRegistering ? "Signing Up..." : "Sign Up"}
             </button>
-            <div className="text-sm text-center">
-              Already have an account? {"   "}
-              <Link
-                to={"/login"}
-                className="text-center text-sm hover:underline font-bold"
-              >
+            <div className="login-signup">
+              Already have an account? {" "}
+              <Link to="/login" className="login-signup-link">
                 Continue
               </Link>
             </div>

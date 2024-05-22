@@ -17,7 +17,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>Welcome to My Blog</h1>
+      <h1>WELCOME</h1>
       {userLoggedIn ? (
         <>
           <PostList />
@@ -29,7 +29,7 @@ const HomePage = () => {
           {showLogin ? (
             <LoginComponent />
           ) : (
-            <button onClick={handleLoginClick}>Logga in</button>
+            <LoginComponent />
           )}
         </div>
       )}

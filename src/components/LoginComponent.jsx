@@ -1,3 +1,4 @@
+
 import React, { useState, useContext, useCallback } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
@@ -40,7 +41,7 @@ const LoginComponent = () => {
         <div className="login-container">
           <div className="login-text">
             <div className="login-title">
-              <h3 className="login-heading">Welcome back</h3>
+              <h3 className="login-heading"></h3>
             </div>
           </div>
           <form onSubmit={onSubmit} className="login-form">

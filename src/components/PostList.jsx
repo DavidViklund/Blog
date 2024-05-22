@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import CommentForm from './CommentForm';
-import Post from './post';
+import Post from "./post";  // Se till att denna filväg är korrekt
+
 
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
