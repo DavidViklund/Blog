@@ -1,47 +1,16 @@
-const EditForm = ({ postId, handleEdit, setIsEditing, setPosts }) => {
-  const [updatedPost, setUpdatedPost] = useState({
-    category: "",
-    title: "",
-    text: "",
-  });
+import React, { useState } from 'react';
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUpdatedPost((prevUpdatedPost) => ({
-      ...prevUpdatedPost,
-      [name]: value,
-    }));
-  };
+const EditForm = ({ postId, initialTitle, initialContent, handleEdit, setIsEditing }) => {
+  const [updatedTitle, setUpdatedTitle] = useState(initialTitle);
+  const [updatedContent, setUpdatedContent] = useState(initialContent);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleEdit(postId, updatedPost);
-    if (typeof setPosts === "function") {
-      setPosts((prevPosts) =>
-        prevPosts.map((post) =>
-          post.id === postId ? { ...post, ...updatedPost } : post
-        )
-      );
-    }
-    setIsEditing(false);
+    handleEdit({ title: updatedTitle, content: updatedContent });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="mb-4">
-        <label htmlFor="category" className="block font-semibold mb-2">
-          Category
-        </label>
-        <input
-          type="text"
-          id="category"
-          name="category"
-          value={updatedPost.category}
-          onChange={handleChange}
-          className="w-full px-3 py-2 border rounded-lg outline-none"
-          placeholder="Enter category"
-        />
-      </div>
+    <form onSubmit={handleSubmit} className="edit-form">
       <div className="mb-4">
         <label htmlFor="title" className="block font-semibold mb-2">
           Title
@@ -50,8 +19,8 @@ const EditForm = ({ postId, handleEdit, setIsEditing, setPosts }) => {
           type="text"
           id="title"
           name="title"
-          value={updatedPost.title}
-          onChange={handleChange}
+          value={updatedTitle}
+          onChange={(e) => setUpdatedTitle(e.target.value)}
           className="w-full px-3 py-2 border rounded-lg outline-none"
           placeholder="Enter title"
         />
@@ -62,9 +31,9 @@ const EditForm = ({ postId, handleEdit, setIsEditing, setPosts }) => {
         </label>
         <textarea
           id="content"
-          name="text"
-          value={updatedPost.content}
-          onChange={handleChange}
+          name="content"
+          value={updatedContent}
+          onChange={(e) => setUpdatedContent(e.target.value)}
           className="w-full px-3 py-2 border rounded-lg outline-none"
           rows="6"
           placeholder="Enter content"
@@ -75,6 +44,13 @@ const EditForm = ({ postId, handleEdit, setIsEditing, setPosts }) => {
         className="bg-blue-500 text-white px-4 py-2 rounded-md"
       >
         Save Changes
+      </button>
+      <button
+        type="button"
+        className="bg-gray-500 text-white px-4 py-2 rounded-md"
+        onClick={() => setIsEditing(false)}
+      >
+        Cancel
       </button>
     </form>
   );

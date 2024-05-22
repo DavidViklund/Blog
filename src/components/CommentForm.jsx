@@ -1,4 +1,3 @@
-// CommentForm.jsx
 import React, { useState } from 'react';
 import { useBlogContext } from "../context/BlogContext";
 
@@ -9,7 +8,7 @@ const CommentForm = ({ postId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (commentText.trim()) {
-      addComment(postId, { user: currentUser.name, text: commentText });
+      addComment(postId, { text: commentText });
       setCommentText('');
     }
   };
@@ -26,8 +25,5 @@ const CommentForm = ({ postId }) => {
     </form>
   );
 };
-
-
-
 
 export default CommentForm;

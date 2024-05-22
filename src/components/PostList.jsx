@@ -1,6 +1,8 @@
+// src/components/PostList.jsx
 import React from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import Post from './post'; // Korrekt sökväg till post.jsx
+import Post from './post'; // Se till att filvägen är korrekt
+
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
 

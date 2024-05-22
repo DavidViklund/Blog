@@ -1,7 +1,7 @@
 import React from 'react';
 import AddPostForm from '../components/AddPostForm';
 
-const AddPostPage = () => {
+const AddPost = () => {
   return (
     <div>
       <h1>Add a New Post</h1>
@@ -10,4 +10,4 @@ const AddPostPage = () => {
   );
 };
 
-export default AddPostPage;
+export default AddPost;
