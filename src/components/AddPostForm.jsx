@@ -1,3 +1,4 @@
+// AddPostForm.jsx
 import React, { useState } from 'react';
 import { useBlogContext } from "../context/BlogContext";
 import CommentForm from './CommentForm';
@@ -38,7 +39,7 @@ const AddPostForm = () => {
             placeholder="Content"
             className="input-field"
           />
-          <button className="buttons">ADD</button>
+          <button type="submit" className="buttons">ADD</button>
         </div>
       </form>
       <CommentForm />

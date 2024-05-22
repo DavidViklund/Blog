@@ -1,3 +1,4 @@
+// post.jsx
 import React from 'react';
 
 const Post = ({ id, title, content, author, currentUser, editPost, deletePost }) => {
@@ -18,4 +19,4 @@ const Post = ({ id, title, content, author, currentUser, editPost, deletePost })
   );
 };
 
-export default Post;
+export default Post; // Exportera Post som standard

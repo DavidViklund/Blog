@@ -1,7 +1,6 @@
 import React from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import Post from './post';
-
+import Post from './post'; // Korrekt sökväg till post.jsx
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
 
