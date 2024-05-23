@@ -3,14 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDVj7kqaz3mdfYcKWOmelaTzJCIZSS7vnU",
-  authDomain: "newblog-58cc8.firebaseapp.com",
-  projectId: "newblog-58cc8",
-  storageBucket: "newblog-58cc8.appspot.com",
-  messagingSenderId: "975832160528",
-  appId: "1:975832160528:web:5344fe1c1693fa073a6d95"
+  apiKey: "AIzaSyC9veB0ctTGEi2YAqQ0cvY0Y1uBStAD9gs",
+  authDomain: "thursdayblog-117a1.firebaseapp.com",
+  projectId: "thursdayblog-117a1",
+  storageBucket: "thursdayblog-117a1.appspot.com",
+  messagingSenderId: "1065684222151",
+  appId: "1:1065684222151:web:48f85b8f59e483dc1b7ee2"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
