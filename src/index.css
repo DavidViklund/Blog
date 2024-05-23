@@ -214,11 +214,14 @@ body, html {
 
 
 
+/* CSS */
 .post-image {
   max-width: 100%;
   height: auto;
   margin-top: 10px;
+
 }
+
 
 /* Blog-kontextstilar */
 .blog-context h2,

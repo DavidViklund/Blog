@@ -1,7 +1,6 @@
-// src/components/PostList.jsx
 import React from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import Post from './post'; // Se till att filvägen är korrekt
+import Post from './post';
 
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
@@ -14,6 +13,8 @@ const PostList = () => {
           id={post.id}
           title={post.title}
           content={post.content}
+          category={post.category}
+          imageUrl={post.imageUrl}
           author={post.author}
           currentUser={currentUser}
           editPost={editPost}

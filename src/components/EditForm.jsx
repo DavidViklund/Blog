@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useBlogContext } from "../context/BlogContext";
 
-const EditForm = ({ postId, initialTitle, initialContent, initialImageUrl, handleEdit, setIsEditing }) => {
+const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initialImageUrl, handleEdit, setIsEditing }) => {
   const [updatedTitle, setUpdatedTitle] = useState(initialTitle);
   const [updatedContent, setUpdatedContent] = useState(initialContent);
+  const [updatedCategory, setUpdatedCategory] = useState(initialCategory);
   const [updatedImage, setUpdatedImage] = useState(null);
   const { uploadImage } = useBlogContext();
 
@@ -13,7 +14,8 @@ const EditForm = ({ postId, initialTitle, initialContent, initialImageUrl, handl
     if (updatedImage) {
       imageUrl = await uploadImage(updatedImage);
     }
-    handleEdit({ title: updatedTitle, content: updatedContent, imageUrl });
+    handleEdit({ title: updatedTitle, content: updatedContent, category: updatedCategory, imageUrl });
+    setIsEditing(false);
   };
 
   return (
@@ -43,6 +45,18 @@ const EditForm = ({ postId, initialTitle, initialContent, initialImageUrl, handl
         ></textarea>
       </div>
       <div className="form-group">
+        <label htmlFor="category" className="form-label">Category</label>
+        <input
+          type="text"
+          id="category"
+          name="category"
+          value={updatedCategory}
+          onChange={(e) => setUpdatedCategory(e.target.value)}
+          className="form-input"
+          placeholder="Enter category"
+        />
+      </div>
+      <div className="form-group">
         <label htmlFor="image" className="form-label">Image</label>
         <input
           type="file"
@@ -61,3 +75,4 @@ const EditForm = ({ postId, initialTitle, initialContent, initialImageUrl, handl
 };
 
 export default EditForm;
+

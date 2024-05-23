@@ -3,7 +3,7 @@ import EditForm from './EditForm';
 import CommentForm from './CommentForm';
 import { useBlogContext } from '../context/BlogContext';
 
-const Post = ({ id, title, content, author, currentUser, editPost, deletePost }) => {
+const Post = ({ id, title, content, author, category, imageUrl, currentUser, editPost, deletePost }) => {
   const [isEditing, setIsEditing] = useState(false);
   const { posts } = useBlogContext();
   const post = posts.find(post => post.id === id);
@@ -20,7 +20,8 @@ const Post = ({ id, title, content, author, currentUser, editPost, deletePost })
           postId={id}
           initialTitle={title}
           initialContent={content}
-          initialImageUrl={post.imageUrl}
+          initialCategory={category}
+          initialImageUrl={imageUrl}
           handleEdit={handleEdit}
           setIsEditing={setIsEditing}
         />
@@ -28,8 +29,9 @@ const Post = ({ id, title, content, author, currentUser, editPost, deletePost })
         <div className="post-content">
           <h3>{title}</h3>
           <p>{content}</p>
-          {post.imageUrl && <img src={post.imageUrl} alt={title} className="post-image" />}
+          {imageUrl && <img src={imageUrl} alt={title} className="post-image" />}
           <p><strong>Author:</strong> {author}</p>
+          <p><strong>Category:</strong> {category}</p>
           {currentUser && author === currentUser.email && (
             <div className="button-container">
               <button className="buttons" onClick={() => setIsEditing(true)}>Edit</button>
@@ -56,7 +58,5 @@ const Post = ({ id, title, content, author, currentUser, editPost, deletePost })
 };
 
 export default Post;
-
-
 
 

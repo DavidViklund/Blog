@@ -20,13 +20,14 @@ const AddPostForm = () => {
         return;
       }
     }
-    if (title.trim() && content.trim()) {  
+    if (title.trim() && content.trim()) {
       const newPost = {
         title,
         content,
         author: currentUser.email, // Använd e-postadressen som författare
         imageUrl
       };
+      console.log("Creating new post:", newPost);
       addPost(newPost);
       setTitle('');
       setContent('');
@@ -43,8 +44,8 @@ const AddPostForm = () => {
   };
 
   return (
-   
-      <form className="post-form-container" onSubmit={handleSubmit}>
+    <div className="post-form-container">
+      <form className="post-container" onSubmit={handleSubmit}>
         <div className="post-content">
           <input
             type="text"
@@ -71,8 +72,9 @@ const AddPostForm = () => {
           <button type="submit" className="buttons">ADD</button>
         </div>
       </form>
-   
+    </div>
   );
 };
 
 export default AddPostForm;
+
