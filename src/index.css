@@ -212,16 +212,12 @@ body, html {
   align-items: left;
 }
 
-
-
 /* CSS */
 .post-image {
   max-width: 100%;
   height: auto;
   margin-top: 10px;
-
 }
-
 
 /* Blog-kontextstilar */
 .blog-context h2,
@@ -294,6 +290,28 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.category-filter {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-label {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.category-select {
+  padding: 8px;
+  background-color: yellow;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-transform: capitalize;
 }
 
 .buttoncontainer {

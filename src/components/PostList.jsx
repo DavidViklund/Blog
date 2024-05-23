@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import Post from './post'; // Se till att filvägen är korrekt
+import Post from './post';
 
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
@@ -17,9 +17,9 @@ const PostList = () => {
   return (
     <div className="post-list-container">
       <div className="category-filter">
-        <label htmlFor="category">Filter by category:</label>
-        <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
-          <option value="">All</option>
+        <label htmlFor="category" className="category-label">Filter by category:</label>
+        <select id="category" value={selectedCategory} onChange={handleCategoryChange} className="category-select">
+          <option value="">A L L</option>
           {Array.from(new Set(posts.map(post => post.category))).map((category, index) => (
             <option key={index} value={category}>{category}</option>
           ))}
@@ -33,7 +33,7 @@ const PostList = () => {
           content={post.content}
           category={post.category}
           author={post.author}
-          imageUrl={post.imageUrl} // Se till att bild-URL skickas med
+          imageUrl={post.imageUrl}
           currentUser={currentUser}
           editPost={editPost}
           deletePost={deletePost}
