@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import Post from './post';
+import Post from './post'; // Se till att filvägen är korrekt
 
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
@@ -33,7 +33,7 @@ const PostList = () => {
           content={post.content}
           category={post.category}
           author={post.author}
-          imageUrl={post.imageUrl}
+          imageUrl={post.imageUrl} // Se till att bild-URL skickas med
           currentUser={currentUser}
           editPost={editPost}
           deletePost={deletePost}

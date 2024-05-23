@@ -25,7 +25,7 @@ const AddPostForm = () => {
       const newPost = {
         title,
         content,
-        category, // Lägg till kategori här
+        category,
         author: currentUser.email, // Använd e-postadressen som författare
         imageUrl
       };
@@ -87,5 +87,3 @@ const AddPostForm = () => {
 };
 
 export default AddPostForm;
-
-
