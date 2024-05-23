@@ -20,6 +20,7 @@ const Post = ({ id, title, content, author, currentUser, editPost, deletePost })
           postId={id}
           initialTitle={title}
           initialContent={content}
+          initialImageUrl={post.imageUrl}
           handleEdit={handleEdit}
           setIsEditing={setIsEditing}
         />
@@ -27,6 +28,7 @@ const Post = ({ id, title, content, author, currentUser, editPost, deletePost })
         <div className="post-content">
           <h3>{title}</h3>
           <p>{content}</p>
+          {post.imageUrl && <img src={post.imageUrl} alt={title} className="post-image" />}
           <p><strong>Author:</strong> {author}</p>
           {currentUser && author === currentUser.email && (
             <div className="button-container">
@@ -54,6 +56,7 @@ const Post = ({ id, title, content, author, currentUser, editPost, deletePost })
 };
 
 export default Post;
+
 
 
 

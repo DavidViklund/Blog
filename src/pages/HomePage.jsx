@@ -12,7 +12,7 @@ const HomePage = () => {
       {userLoggedIn ? (
         <PostList />
       ) : (
-        <p>Please log in to see the posts.</p>
+        <p className='welcomemessage'>Please log in to see the posts.</p>
       )}
     </div>
   );

@@ -1,20 +1,25 @@
 import React, { useState } from 'react';
+import { useBlogContext } from "../context/BlogContext";
 
-const EditForm = ({ postId, initialTitle, initialContent, handleEdit, setIsEditing }) => {
+const EditForm = ({ postId, initialTitle, initialContent, initialImageUrl, handleEdit, setIsEditing }) => {
   const [updatedTitle, setUpdatedTitle] = useState(initialTitle);
   const [updatedContent, setUpdatedContent] = useState(initialContent);
+  const [updatedImage, setUpdatedImage] = useState(null);
+  const { uploadImage } = useBlogContext();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    handleEdit({ title: updatedTitle, content: updatedContent });
+    let imageUrl = initialImageUrl;
+    if (updatedImage) {
+      imageUrl = await uploadImage(updatedImage);
+    }
+    handleEdit({ title: updatedTitle, content: updatedContent, imageUrl });
   };
 
   return (
     <form onSubmit={handleSubmit} className="edit-form">
       <div className="form-group">
-        <label htmlFor="title" className="form-label">
-          Title
-        </label>
+        <label htmlFor="title" className="form-label">Title</label>
         <input
           type="text"
           id="title"
@@ -26,9 +31,7 @@ const EditForm = ({ postId, initialTitle, initialContent, handleEdit, setIsEditi
         />
       </div>
       <div className="form-group">
-        <label htmlFor="content" className="form-label">
-          Content
-        </label>
+        <label htmlFor="content" className="form-label">Content</label>
         <textarea
           id="content"
           name="content"
@@ -39,13 +42,19 @@ const EditForm = ({ postId, initialTitle, initialContent, handleEdit, setIsEditi
           placeholder="Enter content"
         ></textarea>
       </div>
+      <div className="form-group">
+        <label htmlFor="image" className="form-label">Image</label>
+        <input
+          type="file"
+          id="image"
+          name="image"
+          onChange={(e) => setUpdatedImage(e.target.files[0])}
+          className="form-input"
+        />
+      </div>
       <div className="button-group">
-        <button type="submit" className="button button-primary">
-          Save Changes
-        </button>
-        <button type="button" className="button button-secondary" onClick={() => setIsEditing(false)}>
-          Cancel
-        </button>
+        <button type="submit" className="button button-primary">Save Changes</button>
+        <button type="button" className="button button-secondary" onClick={() => setIsEditing(false)}>Cancel</button>
       </div>
     </form>
   );

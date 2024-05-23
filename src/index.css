@@ -1,10 +1,6 @@
 /* Global reset för p-taggar */
 p {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 16px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Globala stilar */
@@ -12,7 +8,7 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: antiquewhite;
+  background-color: rgb(237, 237, 214);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -44,7 +40,7 @@ body, html {
 .login-container {
   width: 300px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 10px solid yellow;
   border-radius: 8px;
   background-color: #fff;
   margin: auto;
@@ -58,7 +54,11 @@ body, html {
   font-size: 1.5rem;
   font-weight: bold;
 }
+.welcomemessage{
 
+  font-weight: bolder;
+  text-align: center;
+}
 .login-form {
   margin-top: 20px;
 }
@@ -106,22 +106,22 @@ body, html {
 
 .logout-button {
   width: 100%;
-  color: white;
+  color:#333;
   border: none;
-  background-color: rgb(226, 191, 14);
+  background-color: transparent;
   cursor: pointer;
   padding-right: 20px;
 }
 
 #logged-user {
-  color: white;
+  color: #333;
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase; /* Texten visas i versaler */
   text-decoration: none;
   letter-spacing: 1px;
   font-size: 16px;
   margin: 0;
-  padding: 0 20px;
+  padding-right: 20px;
 }
 
 .login-button.disabled {
@@ -179,26 +179,45 @@ body, html {
   align-items: left;
   background-color: white;
   padding: 10px;
-  border: 10px solid rgb(226, 191, 14);
+  border: 10px solid yellow;
   margin: 10px auto;
   max-width: 600px;
   width: 100%;
 }
+.post-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 600px;
+  background-color: white;
+  border: 10px solid yellow;
+  margin: 10px auto; /* Detta centrerar elementet horisontellt */
+  padding: 20px;
+}
+
+.post-content{
+  margin: 10px;
+  padding: 20px;
+}
+
 
 .post-container {
-  border: 2px solid white;
+ 
   background-color: white;
   margin: 10px;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: left;
 }
 
-.post-form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
 }
 
 /* Blog-kontextstilar */
@@ -241,7 +260,7 @@ body, html {
   align-items: end;
   justify-content: end;
   padding: 20px;
-  background-color: rgb(226, 191, 14);
+  background-color: yellow;
 }
 
 li {
@@ -266,7 +285,7 @@ textarea::placeholder {
 }
 
 h1 {
-  color: white;
+  color:yellow;
   font-size: 64px;
   padding-top: 40px;
   display: flex;
@@ -286,6 +305,7 @@ h1 {
 .buttons {
   background-color: #e5b712;
   color: #fff;
+  margin-right: 20px;
   text-transform: uppercase;
   letter-spacing: 6px;
   border-style: none;
@@ -302,19 +322,49 @@ h1 {
   background-color: #d4a710;
 }
 
+.buttons:active {
+  background-color: #4CAF50; /* Grön färg när knappen klickas */
+}
+
+.file-upload-button {
+  background-color: #e5b712;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  margin-right: 20px;
+  border-style: none;
+  border-radius: 5px;
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  padding: 6px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.file-upload-button:hover {
+  background-color: #d4a710;
+}
+
+.file-upload-button:active {
+  background-color: #4CAF50; /* Grön färg när knappen klickas */
+}
+
 a {
-  color: white;
+  color:#333;
   padding-right: 20px;
 }
 
-/* Stilar för CommentForm */
+/* Kommentar-formulärstilar */
 .comment-form {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 25px;
+}
 
+.comments-section{
+  padding: 25px;
 }
 
 .comment-input {
@@ -323,7 +373,6 @@ a {
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-right: 10px;
-  margin-bottom: 0px;
   height: 40px; /* Sätt en fast höjd */
 }
 
@@ -332,18 +381,23 @@ a {
   border: none;
   color: white;
   padding: 0 16px; /* Gör bredden av knappen jämn */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
   height: 40px; /* Sätt samma höjd som inputfältet */
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .comment-button:hover {
-  background-color: #e5b712; /* Mörkare gul färg vid hover */
+  background-color: #d4a710; /* Mörkare gul färg vid hover */
 }
 
-/* Stilar för EditForm */
+/* EditForm-stilar */
 .edit-form {
   margin: 20px 0;
 }
@@ -397,7 +451,7 @@ a {
 }
 
 .button-primary {
-  background-color:#d4a710;
+  background-color: #4CAF50;
 }
 
 .button-primary:hover {
@@ -405,7 +459,7 @@ a {
 }
 
 .button-secondary {
-  background-color: #f48536;
+  background-color: #f44336;
 }
 
 .button-secondary:hover {
@@ -426,6 +480,8 @@ a {
   }
 
   .post-container {
+
+    
     margin: 5px;
     padding: 5px;
   }
