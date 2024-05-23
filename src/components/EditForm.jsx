@@ -11,8 +11,8 @@ const EditForm = ({ postId, initialTitle, initialContent, handleEdit, setIsEditi
 
   return (
     <form onSubmit={handleSubmit} className="edit-form">
-      <div className="mb-4">
-        <label htmlFor="title" className="block font-semibold mb-2">
+      <div className="form-group">
+        <label htmlFor="title" className="form-label">
           Title
         </label>
         <input
@@ -21,12 +21,12 @@ const EditForm = ({ postId, initialTitle, initialContent, handleEdit, setIsEditi
           name="title"
           value={updatedTitle}
           onChange={(e) => setUpdatedTitle(e.target.value)}
-          className="w-full px-3 py-2 border rounded-lg outline-none"
+          className="form-input"
           placeholder="Enter title"
         />
       </div>
-      <div className="mb-8">
-        <label htmlFor="content" className="block font-semibold mb-2">
+      <div className="form-group">
+        <label htmlFor="content" className="form-label">
           Content
         </label>
         <textarea
@@ -34,24 +34,19 @@ const EditForm = ({ postId, initialTitle, initialContent, handleEdit, setIsEditi
           name="content"
           value={updatedContent}
           onChange={(e) => setUpdatedContent(e.target.value)}
-          className="w-full px-3 py-2 border rounded-lg outline-none"
+          className="form-textarea"
           rows="6"
           placeholder="Enter content"
         ></textarea>
       </div>
-      <button
-        type="submit"
-        className="bg-blue-500 text-white px-4 py-2 rounded-md"
-      >
-        Save Changes
-      </button>
-      <button
-        type="button"
-        className="bg-gray-500 text-white px-4 py-2 rounded-md"
-        onClick={() => setIsEditing(false)}
-      >
-        Cancel
-      </button>
+      <div className="button-group">
+        <button type="submit" className="button button-primary">
+          Save Changes
+        </button>
+        <button type="button" className="button button-secondary" onClick={() => setIsEditing(false)}>
+          Cancel
+        </button>
+      </div>
     </form>
   );
 };

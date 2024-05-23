@@ -14,14 +14,15 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="comment-form">
       <input
         type="text"
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
         placeholder="Add a comment"
+        className="comment-input"
       />
-      <button type="submit">+</button>
+      <button type="submit" className="comment-button">+</button>
     </form>
   );
 };
