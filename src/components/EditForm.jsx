@@ -15,7 +15,6 @@ const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initi
       imageUrl = await uploadImage(updatedImage);
     }
     handleEdit({ title: updatedTitle, content: updatedContent, category: updatedCategory, imageUrl });
-    setIsEditing(false);
   };
 
   return (
@@ -75,4 +74,3 @@ const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initi
 };
 
 export default EditForm;
-

@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useBlogContext } from '../context/BlogContext';
-import Post from './post';
+import Post from './post'; // Se till att filvägen är korrekt
 
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const filteredPosts = selectedCategory
+    ? posts.filter(post => post.category === selectedCategory)
+    : posts;
 
   return (
     <div className="post-list-container">
-      {posts.map((post) => (
+      <div className="category-filter">
+        <label htmlFor="category">Filter by category:</label>
+        <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="">All</option>
+          {Array.from(new Set(posts.map(post => post.category))).map((category, index) => (
+            <option key={index} value={category}>{category}</option>
+          ))}
+        </select>
+      </div>
+      {filteredPosts.map((post) => (
         <Post
           key={post.id}
           id={post.id}
           title={post.title}
           content={post.content}
           category={post.category}
-          imageUrl={post.imageUrl}
           author={post.author}
+          imageUrl={post.imageUrl} // Se till att bild-URL skickas med
           currentUser={currentUser}
           editPost={editPost}
           deletePost={deletePost}

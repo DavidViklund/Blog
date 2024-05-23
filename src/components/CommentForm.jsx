@@ -8,7 +8,7 @@ const CommentForm = ({ postId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (commentText.trim()) {
-      addComment(postId, { text: commentText });
+      addComment(postId, { user: currentUser.email, text: commentText });
       setCommentText('');
     }
   };

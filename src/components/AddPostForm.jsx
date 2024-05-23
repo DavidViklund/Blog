@@ -4,6 +4,7 @@ import { useBlogContext } from '../context/BlogContext';
 const AddPostForm = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [category, setCategory] = useState('');
   const [image, setImage] = useState(null);
   const { addPost, uploadImage, currentUser } = useBlogContext();
 
@@ -24,6 +25,7 @@ const AddPostForm = () => {
       const newPost = {
         title,
         content,
+        category, // Lägg till kategori här
         author: currentUser.email, // Använd e-postadressen som författare
         imageUrl
       };
@@ -31,6 +33,7 @@ const AddPostForm = () => {
       addPost(newPost);
       setTitle('');
       setContent('');
+      setCategory('');
       setImage(null);
     }
   };
@@ -61,6 +64,13 @@ const AddPostForm = () => {
             className="input-field"
           />
           <input
+            type="text"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            placeholder="Category"
+            className="input-field"
+          />
+          <input
             type="file"
             id="fileInput"
             onChange={handleFileChange}
@@ -77,4 +87,5 @@ const AddPostForm = () => {
 };
 
 export default AddPostForm;
+
 

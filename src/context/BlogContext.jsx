@@ -15,6 +15,7 @@ export const BlogProvider = ({ children }) => {
       author: 'jane.doe@example.com',
       content: 'Upptäck Naturvin: En Smakupplevelse från Naturen.Naturvin är mer än bara en dryck – det är en resa tillbaka till naturens ursprung. Tillverkat med minimal mänsklig inblandning, naturvin låter druvorna och jorden tala för sig själva. Utan tillsatser och med naturlig jäsning, erbjuder varje flaska en unik smakprofil. Föreställ dig att sippa på ett vin som doftar av vildblommor, kryddor och frukt, där varje sipp ger en ny överraskning. Naturvin hyllar den råa skönheten i druvorna och terroiren de växer i, vilket skapar en genuin och autentisk vinupplevelse. Att välja naturvin är att välja en livsstil som värderar hållbarhet, autenticitet och en djupare koppling till naturen. Så nästa gång du ska välja vin, prova ett naturvin och låt dig förföras av dess naturliga charm och komplexitet. Skål för naturens egen konst!',
       comments: [],
+      category: 'Vin'
     }
   ];
 
@@ -62,7 +63,9 @@ export const BlogProvider = ({ children }) => {
     const uniqueName = `${Date.now()}_${file.name}`;
     const storageRef = ref(storage, `images/${uniqueName}`);
     await uploadBytes(storageRef, file);
+    console.log("Uploading to storage:", storageRef);
     const downloadURL = await getDownloadURL(storageRef);
+    console.log("Download URL:", downloadURL);
     return downloadURL;
   };
 
@@ -82,3 +85,4 @@ export const BlogProvider = ({ children }) => {
     </BlogContext.Provider>
   );
 };
+
