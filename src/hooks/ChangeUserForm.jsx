@@ -9,7 +9,7 @@ const ChangeUsernameForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      // Uppdatera användarnamnet lokalt
+      // Uppdaterar användarnamnet lokalt
       setUserName(newUsername);
       
       // Återställ formuläret
