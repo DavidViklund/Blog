@@ -1,3 +1,7 @@
+# Denna konfigurationsfil används av Netlify för att bygga och distribuera applikationen.
+# [build] sektionen specificerar kommandot för att bygga projektet och vilken katalog som ska publiceras.
+# [[redirects]] sektionen säkerställer att alla URL-förfrågningar omdirigeras till index.html för att stödja klient-sidrouting i en single-page application (SPA).
+
 [build]
   command = "npm run build"
   publish = "dist"

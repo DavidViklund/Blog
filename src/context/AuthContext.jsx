@@ -1,3 +1,8 @@
+// Denna fil definierar AuthContext som hanterar autentisering i applikationen.
+// Den lyssnar på förändringar i autentiseringstillståndet, uppdaterar den aktuella
+// användaren och hanterar utloggning. Autentiseringsstatusen sparas i localStorage
+// för att bevara inloggningsstatusen mellan sidladdningar.
+
 import React, { createContext, useState, useEffect, useContext } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";

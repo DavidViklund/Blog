@@ -1,12 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/NavBar';
-import HomePage from './pages/HomePage';
-import AddPost from './pages/AddPost';
-import LoginComponent from './components/LoginComponent';
-import RegisterComponent from './components/RegisterComponent';
-import { AuthProvider, useAuth } from './context/AuthContext';
-import { BlogProvider } from './context/BlogContext';
+// Denna fil innehåller huvudkomponenten `App` och definierar routning för applikationen.
+// `AppRoutes` hanterar routning och autentisering för olika sidor i applikationen.
+// `AuthProvider` och `BlogProvider` omger applikationen för att tillhandahålla autentisering och bloggkontext globalt.
+
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Navbar from "./components/NavBar";
+import HomePage from "./pages/HomePage";
+import AddPost from "./pages/AddPost";
+import LoginComponent from "./components/LoginComponent";
+import RegisterComponent from "./components/RegisterComponent";
+import { AuthProvider, useAuth } from "./context/AuthContext";
+import { BlogProvider } from "./context/BlogContext";
 
 const AppRoutes = () => {
   const { currentUser } = useAuth();

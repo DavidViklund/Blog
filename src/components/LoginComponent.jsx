@@ -1,24 +1,28 @@
-
-import React, { useState, useContext, useCallback } from 'react';
-import { Navigate, Link } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
-import { signInUser } from '../firebase/authFunctions';
-import '../index.css';
+/**
+ * LoginComponent är en React-komponent som hanterar användarinloggning.
+ * Den använder AuthContext för att kontrollera autentiseringstillståndet
+ * och signInUser-funktionen för att logga in användaren med Firebase.
+ */
+import React, { useState, useContext, useCallback } from "react";
+import { Navigate, Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { signInUser } from "../firebase/authFunctions";
+import "../index.css";
 
 const LoginComponent = () => {
   const { userLoggedIn } = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // Använd useCallback för att memoizera onSubmit-funktionen
+  // Använd useCallback för att komma ihåg onSubmit-funktionen
   const onSubmit = useCallback(
     async (e) => {
       e.preventDefault();
-      console.log('Submitting login form...');
-      console.log('Email:', email);
-      console.log('Password:', password);
+      console.log("Submitting login form...");
+      console.log("Email:", email);
+      console.log("Password:", password);
       if (!isSigningIn) {
         setIsSigningIn(true);
         try {
@@ -35,7 +39,7 @@ const LoginComponent = () => {
 
   return (
     <div>
-      {userLoggedIn && <Navigate to={'/HomePage'} replace={true} />}
+      {userLoggedIn && <Navigate to={"/HomePage"} replace={true} />}
 
       <main className="login-main">
         <div className="login-container">
@@ -78,16 +82,14 @@ const LoginComponent = () => {
             <button
               type="submit"
               disabled={isSigningIn}
-              className={`login-button ${
-                isSigningIn ? 'disabled' : ''
-              }`}
+              className={`login-button ${isSigningIn ? "disabled" : ""}`}
             >
-              {isSigningIn ? 'Signing In...' : 'Sign In'}
+              {isSigningIn ? "Signing In..." : "Sign In"}
             </button>
           </form>
           <p className="login-signup">
-            Don't have an account?{' '}
-            <Link to={'/register'} className="login-signup-link">
+            Don't have an account?{" "}
+            <Link to={"/register"} className="login-signup-link">
               Sign up
             </Link>
           </p>

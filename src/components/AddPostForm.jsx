@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-import { useBlogContext } from '../context/BlogContext';
+/**
+ * AddPostForm är en React-komponent som hanterar inlämning av nya blogginlägg.
+ * Användare kan ange titel, innehåll, kategori och ladda upp en bild för inlägget.
+ */
+
+import React, { useState } from "react";
+import { useBlogContext } from "../context/BlogContext";
 
 const AddPostForm = () => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [category, setCategory] = useState('');
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [category, setCategory] = useState("");
   const [image, setImage] = useState(null);
   const { addPost, uploadImage, currentUser } = useBlogContext();
 
+  // Hanterar formulärinlämning
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let imageUrl = '';
+    let imageUrl = "";
     if (image) {
       try {
         console.log("Uploading image:", image.name);
@@ -27,23 +33,25 @@ const AddPostForm = () => {
         content,
         category,
         author: currentUser.email, // Använd e-postadressen som författare
-        imageUrl
+        imageUrl,
       };
       console.log("Creating new post:", newPost);
       addPost(newPost);
-      setTitle('');
-      setContent('');
-      setCategory('');
+      setTitle("");
+      setContent("");
+      setCategory("");
       setImage(null);
     }
   };
 
+  // Hanterar filändring
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
   };
 
+  // Hanterar filuppladdningsknappens klick
   const handleFileUploadClick = () => {
-    document.getElementById('fileInput').click();
+    document.getElementById("fileInput").click();
   };
 
   return (
@@ -74,12 +82,18 @@ const AddPostForm = () => {
             type="file"
             id="fileInput"
             onChange={handleFileChange}
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
           />
-          <button type="button" className="file-upload-button" onClick={handleFileUploadClick}>
-            Välj fil
+          <button
+            type="button"
+            className="file-upload-button"
+            onClick={handleFileUploadClick}
+          >
+            LADDA UPP BILD
           </button>
-          <button type="submit" className="buttons">ADD</button>
+          <button type="submit" className="buttons">
+            ADD POST
+          </button>
         </div>
       </form>
     </div>

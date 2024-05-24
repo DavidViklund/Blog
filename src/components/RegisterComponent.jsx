@@ -1,4 +1,8 @@
-
+/**
+ * RegisterComponent är en React-komponent som hanterar registrering av nya användare.
+ * Den visar ett registreringsformulär där användaren kan ange e-postadress, lösenord och bekräfta lösenord.
+ * Om användaren redan är inloggad, omdirigeras de till startsidan.
+ */
 import React, { useState, useContext } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -87,14 +91,12 @@ const RegisterComponent = () => {
             <button
               type="submit"
               disabled={isRegistering}
-              className={`login-button ${
-                isRegistering ? "disabled" : ""
-              }`}
+              className={`login-button ${isRegistering ? "disabled" : ""}`}
             >
               {isRegistering ? "Signing Up..." : "Sign Up"}
             </button>
             <div className="login-signup">
-              Already have an account? {" "}
+              Already have an account?{" "}
               <Link to="/login" className="login-signup-link">
                 Continue
               </Link>

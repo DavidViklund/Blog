@@ -1,7 +1,21 @@
-import React, { useState } from 'react';
+/**
+ * EditForm är en React-komponent som hanterar redigering av blogginlägg.
+ * Den tar emot initiala värden för titel, innehåll, kategori och bild-URL
+ * och låter användaren uppdatera dessa. Använder BlogContext för att hantera
+ * bilduppladdning.
+ */
+import React, { useState } from "react";
 import { useBlogContext } from "../context/BlogContext";
 
-const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initialImageUrl, handleEdit, setIsEditing }) => {
+const EditForm = ({
+  postId,
+  initialTitle,
+  initialContent,
+  initialCategory,
+  initialImageUrl,
+  handleEdit,
+  setIsEditing,
+}) => {
   const [updatedTitle, setUpdatedTitle] = useState(initialTitle);
   const [updatedContent, setUpdatedContent] = useState(initialContent);
   const [updatedCategory, setUpdatedCategory] = useState(initialCategory);
@@ -14,13 +28,20 @@ const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initi
     if (updatedImage) {
       imageUrl = await uploadImage(updatedImage);
     }
-    handleEdit({ title: updatedTitle, content: updatedContent, category: updatedCategory, imageUrl });
+    handleEdit({
+      title: updatedTitle,
+      content: updatedContent,
+      category: updatedCategory,
+      imageUrl,
+    });
   };
 
   return (
     <form onSubmit={handleSubmit} className="edit-form">
       <div className="form-group">
-        <label htmlFor="title" className="form-label">Title</label>
+        <label htmlFor="title" className="form-label">
+          Title
+        </label>
         <input
           type="text"
           id="title"
@@ -32,7 +53,9 @@ const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initi
         />
       </div>
       <div className="form-group">
-        <label htmlFor="content" className="form-label">Content</label>
+        <label htmlFor="content" className="form-label">
+          Content
+        </label>
         <textarea
           id="content"
           name="content"
@@ -44,7 +67,9 @@ const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initi
         ></textarea>
       </div>
       <div className="form-group">
-        <label htmlFor="category" className="form-label">Category</label>
+        <label htmlFor="category" className="form-label">
+          Category
+        </label>
         <input
           type="text"
           id="category"
@@ -56,7 +81,9 @@ const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initi
         />
       </div>
       <div className="form-group">
-        <label htmlFor="image" className="form-label">Image</label>
+        <label htmlFor="image" className="form-label">
+          Image
+        </label>
         <input
           type="file"
           id="image"
@@ -66,8 +93,16 @@ const EditForm = ({ postId, initialTitle, initialContent, initialCategory, initi
         />
       </div>
       <div className="button-group">
-        <button type="submit" className="button button-primary">Save Changes</button>
-        <button type="button" className="button button-secondary" onClick={() => setIsEditing(false)}>Cancel</button>
+        <button type="submit" className="button button-primary">
+          Save Changes
+        </button>
+        <button
+          type="button"
+          className="button button-secondary"
+          onClick={() => setIsEditing(false)}
+        >
+          Cancel
+        </button>
       </div>
     </form>
   );

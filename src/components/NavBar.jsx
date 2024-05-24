@@ -1,4 +1,7 @@
-// src/components/Navbar.jsx
+/**
+ * Navbar är en React-komponent som representerar navigeringsfältet.
+ * Den visar olika länkar baserat på användarens autentiseringstillstånd.
+ */
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -16,7 +19,9 @@ const Navbar = () => {
         {currentUser ? (
           <>
             <p id="logged-user">{currentUser.email}</p>
-            <button className="logout-button" onClick={logout}>LOGOUT</button>
+            <button className="logout-button" onClick={logout}>
+              LOGOUT
+            </button>
           </>
         ) : (
           <>

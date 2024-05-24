@@ -1,3 +1,7 @@
+// Denna fil konfigurerar och initialiserar Firebase-applikationen.
+// Den inkluderar autentisering och lagringstjänster från Firebase.
+// Exporterar Firebase-appen, autentisering och lagring för att användas i andra delar av applikationen.
+
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
@@ -8,7 +12,7 @@ const firebaseConfig = {
   projectId: "thursdayblog-117a1",
   storageBucket: "thursdayblog-117a1.appspot.com",
   messagingSenderId: "1065684222151",
-  appId: "1:1065684222151:web:48f85b8f59e483dc1b7ee2"
+  appId: "1:1065684222151:web:48f85b8f59e483dc1b7ee2",
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
