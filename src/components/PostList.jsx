@@ -5,7 +5,7 @@
 
 import React, { useState } from "react";
 import { useBlogContext } from "../context/BlogContext";
-import Post from "./Post";
+import Post from "./post";
 
 const PostList = () => {
   const { posts, currentUser, editPost, deletePost } = useBlogContext();
